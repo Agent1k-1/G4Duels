@@ -1,0 +1,42 @@
+title: '&#55AAFFВыбор кита · %page%'
+size: 54
+items:
+  own:
+    slot: 45
+    material: CHEST
+    name: '&eСвой инвентарь'
+    lore: ['&7Бой с текущими вещами.', '&7После боя вещи восстанавливаются.']
+    left_click_action: ['[kit] own']
+    right_click_action: ['[message] &eВ бой вы возьмёте свой текущий инвентарь.']
+  none:
+    slot: 46
+    material: GLASS_BOTTLE
+    name: '&eБез кита'
+    lore: ['&7Бой с пустым инвентарём.']
+    left_click_action: ['[kit] none']
+    right_click_action: ['[message] &eИнвентарь будет пустым до конца боя.']
+  previous:
+    slot: 48
+    material: ARROW
+    name: '&eПредыдущая страница'
+    left_click_action: ['[page] kits -1']
+    right_click_action: ['[page] kits -1']
+  back:
+    slot: 49
+    material: BARRIER
+    name: '&cНазад'
+    left_click_action: ['[menu] duel']
+    right_click_action: ['[menu] duel']
+  next:
+    slot: 50
+    material: ARROW
+    name: '&eСледующая страница'
+    left_click_action: ['[page] kits 1']
+    right_click_action: ['[page] kits 1']
+dynamic:
+  slots: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+  material: IRON_SWORD
+  name: '&eКит: %entry%'
+  lore: ['&7ЛКМ: выбрать', '&7ПКМ: информация']
+  left_click_action: ['[kit] %entry%']
+  right_click_action: ['[message] &eСерверный кит: &f%entry%']

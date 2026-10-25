@@ -1,0 +1,35 @@
+title: '&#55AAFFВыбор арены · %page%'
+size: 54
+items:
+  auto:
+    slot: 45
+    material: COMPASS
+    name: '&eСвободная арена'
+    lore: ['&7Автоматический выбор при принятии приглашения.']
+    left_click_action: ['[arena] auto']
+    right_click_action: ['[arena] auto']
+  previous:
+    slot: 48
+    material: ARROW
+    name: '&eПредыдущая страница'
+    left_click_action: ['[page] arenas -1']
+    right_click_action: ['[page] arenas -1']
+  back:
+    slot: 49
+    material: BARRIER
+    name: '&cНазад'
+    left_click_action: ['[menu] duel']
+    right_click_action: ['[menu] duel']
+  next:
+    slot: 50
+    material: ARROW
+    name: '&eСледующая страница'
+    left_click_action: ['[page] arenas 1']
+    right_click_action: ['[page] arenas 1']
+dynamic:
+  slots: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+  material: GRASS_BLOCK
+  name: '&eАрена: %entry%'
+  lore: ['&7ЛКМ: выбрать', '&7Занятость проверяется при принятии.']
+  left_click_action: ['[arena] %entry%']
+  right_click_action: ['[message] &eАрена: &f%entry%']

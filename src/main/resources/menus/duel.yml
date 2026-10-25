@@ -1,0 +1,31 @@
+title: '&#55AAFFДуэль с %target%'
+size: 27
+items:
+  kit:
+    slot: 11
+    material: DIAMOND_SWORD
+    name: '&eВыбрать кит'
+    lore: ['&7Сейчас: &f%kit%', '&7ЛКМ: выбор кита', '&7ПКМ: свой инвентарь']
+    left_click_action: ['[menu] kits']
+    right_click_action: ['[kit] own']
+  arena:
+    slot: 13
+    material: GRASS_BLOCK
+    name: '&eВыбрать арену'
+    lore: ['&7Сейчас: &f%arena%', '&7ЛКМ: выбор арены', '&7ПКМ: автоматически']
+    left_click_action: ['[menu] arenas']
+    right_click_action: ['[arena] auto']
+  confirm:
+    slot: 15
+    material: LIME_CONCRETE
+    name: '&aОтправить приглашение'
+    lore: ['&7Игрок: &f%target%', '&7Кит: &f%kit%', '&7Арена: &f%arena%']
+    left_click_action: ['[invite]']
+    right_click_action: ['[invite]']
+  close:
+    slot: 22
+    material: BARRIER
+    name: '&cЗакрыть'
+    lore: []
+    left_click_action: ['[close]']
+    right_click_action: ['[close]']

@@ -1,0 +1,52 @@
+duel:
+  countdown-seconds: 5
+  max-duration-seconds: 300
+  allowed-use-items:
+    - BOW
+    - CROSSBOW
+    - TRIDENT
+    - SHIELD
+    - ENDER_PEARL
+    - SNOWBALL
+    - EGG
+    - POTION
+    - SPLASH_POTION
+    - LINGERING_POTION
+    - WIND_CHARGE
+    - LEATHER_HELMET
+    - LEATHER_CHESTPLATE
+    - LEATHER_LEGGINGS
+    - LEATHER_BOOTS
+    - CHAINMAIL_HELMET
+    - CHAINMAIL_CHESTPLATE
+    - CHAINMAIL_LEGGINGS
+    - CHAINMAIL_BOOTS
+    - IRON_HELMET
+    - IRON_CHESTPLATE
+    - IRON_LEGGINGS
+    - IRON_BOOTS
+    - GOLDEN_HELMET
+    - GOLDEN_CHESTPLATE
+    - GOLDEN_LEGGINGS
+    - GOLDEN_BOOTS
+    - DIAMOND_HELMET
+    - DIAMOND_CHESTPLATE
+    - DIAMOND_LEGGINGS
+    - DIAMOND_BOOTS
+    - NETHERITE_HELMET
+    - NETHERITE_CHESTPLATE
+    - NETHERITE_LEGGINGS
+    - NETHERITE_BOOTS
+    - TURTLE_HELMET
+    - ELYTRA
+  allowed-commands:
+    - 'duel leave'
+    - 'duels leave'
+    - 'g4duels leave'
+    - 'duel restore'
+    - 'duels restore'
+    - 'g4duels restore'
+invitations:
+  expire-seconds: 30
+  cooldown-seconds: 3
+  max-pending: 1000
