@@ -55,6 +55,9 @@ public final class MenuService implements Listener {
         if (duels.busy(player)) { plugin.messages().send(player, "unavailable"); return; }
         YamlConfiguration yaml = menus.get(name);
         if (yaml == null) return;
+        ConfigurationSection dynamic = yaml.getConfigurationSection("dynamic");
+        List<String> entries = name.equals("kits") ? kits.names().stream().sorted().toList() : arenas.all().stream().filter(a -> a.ready()).map(a -> a.id()).sorted().toList();
+        if (dynamic != null) context.page(Math.min(context.page(), Math.max(0, (entries.size() - 1) / dynamic.getIntegerList("slots").size())));
         Map<String, String> values = new HashMap<>();
         values.put("player", player.getName()); values.put("target", Optional.ofNullable(Bukkit.getPlayer(context.target())).map(Player::getName).orElse("Не в сети"));
         values.put("kit", context.kit()); values.put("arena", context.arena().orElse("Автоматически")); values.put("page", Integer.toString(context.page() + 1));
@@ -66,11 +69,8 @@ public final class MenuService implements Listener {
             ConfigurationSection section = Objects.requireNonNull(items.getConfigurationSection(key));
             put(holder, section.getInt("slot"), section, values);
         }
-        ConfigurationSection dynamic = yaml.getConfigurationSection("dynamic");
         if (dynamic != null) {
-            List<String> entries = name.equals("kits") ? kits.names().stream().sorted().toList() : arenas.all().stream().filter(a -> a.ready()).map(a -> a.id()).sorted().toList();
             List<Integer> slots = dynamic.getIntegerList("slots");
-            context.page(Math.min(context.page(), Math.max(0, (entries.size() - 1) / slots.size())));
             for (int index = 0; index < slots.size(); index++) {
                 int entry = context.page() * slots.size() + index;
                 if (entry >= entries.size()) break;

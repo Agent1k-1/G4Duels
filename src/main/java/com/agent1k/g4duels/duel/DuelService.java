@@ -78,7 +78,12 @@ public final class DuelService {
         invitations.values().removeIf(i -> Set.of(sender.getUniqueId(), receiver.getUniqueId()).contains(i.sender()) || Set.of(sender.getUniqueId(), receiver.getUniqueId()).contains(i.receiver()));
         Duel duel = new Duel(sender, receiver, arena.get(), selected.get());
         duel.players().forEach(p -> { p.closeInventory(); active.put(p.getUniqueId(), duel); });
-        var saved = snapshots.put(Map.of(sender.getUniqueId(), PlayerSnapshot.capture(sender), receiver.getUniqueId(), PlayerSnapshot.capture(receiver)));
+        java.util.concurrent.CompletableFuture<Void> saved;
+        try { saved = snapshots.put(Map.of(sender.getUniqueId(), PlayerSnapshot.capture(sender), receiver.getUniqueId(), PlayerSnapshot.capture(receiver))); }
+        catch (RuntimeException exception) {
+            plugin.getLogger().severe("Не удалось подготовить снимки: " + exception.getMessage());
+            finish(duel, Optional.empty(), "cancelled"); return;
+        }
         saved.whenComplete((ignored, error) -> {
             if (!plugin.isEnabled()) return;
             Bukkit.getScheduler().runTask(plugin, () -> {

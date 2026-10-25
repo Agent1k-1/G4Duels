@@ -166,4 +166,21 @@ final class DuelIntegrationTest {
         PlayerMock admin = server.addPlayer("Администратор"); admin.setOp(true); command(admin, "arena delete test");
         assertTrue(com.agent1k.g4duels.config.YamlFiles.load(plugin.getDataFolder().toPath().resolve("arenas.yml").toFile()).contains("test"));
     }
+
+    @Test void clickingNextOnLastPageKeepsCorrectTitle() {
+        command(first, second.getName());
+        clickMenu(11);
+        String title = first.getOpenInventory().getTitle();
+        assertEquals(54, first.getOpenInventory().getTopInventory().getSize());
+        clickMenu(50);
+        assertEquals(title, first.getOpenInventory().getTitle());
+    }
+    private void clickMenu(int slot) {
+        var event = new org.bukkit.event.inventory.InventoryClickEvent(first.getOpenInventory(),
+            org.bukkit.event.inventory.InventoryType.SlotType.CONTAINER, slot,
+            org.bukkit.event.inventory.ClickType.LEFT, org.bukkit.event.inventory.InventoryAction.PICKUP_ALL);
+        server.getPluginManager().callEvent(event);
+        assertTrue(event.isCancelled());
+        server.getScheduler().performOneTick();
+    }
 }
